@@ -21,7 +21,7 @@ title: Building the Left
 subtitle: Push the <span style="color: #c00000;">**SPD**</span> to the left.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 choose-if: advisor_action_timer = 0
-on-arrival: advisor_action_timer = 6; left_strength += 6; left_dissent -= 8; reformist_dissent += 2
+on-arrival: advisor_action_timer = 1; left_strength += 6; left_dissent -= 8; reformist_dissent += 2
 
 We have increased the strength of the left faction with the <span style="color: #c00000;">**SPD**</span>.
 
@@ -30,7 +30,7 @@ title: Cooperation with the <span style="color: #700000;">**KPD**</span>
 subtitle: Push the party to be more friendly towards the <span style="color: #700000;">**KPD**</span>.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 choose-if: advisor_action_timer = 0
-on-arrival: advisor_action_timer = 6; left_strength += 5; kpd_relation += 4*(1-dissent); reformist_dissent += 2; communist_coalition += 1 if kpd_cooperation_seen <= 1; kpd_cooperation_seen += 1
+on-arrival: advisor_action_timer = 1; left_strength += 5; kpd_relation += 4*(1-dissent); reformist_dissent += 2; communist_coalition += 1 if kpd_cooperation_seen <= 1; kpd_cooperation_seen += 1
 
 Through his work, Rosenfeld has defended individual <span style="color: #700000;">**KPD**</span> members; this should make some connections possible.
 
@@ -39,7 +39,7 @@ title: The Prussian Bulwark
 subtitle: As the Minister-President of Prussia, Rosenfeld has power over the Prussian bureaucracy and security services.
 choose-if: advisor_action_timer <= 0 and prussia_leader = "Rosenfeld"
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if prussia_leader != "Rosenfeld" : Rosenfeld doesn't control Prussia. ?]
-on-arrival: advisor_action_timer = 6; prussian_affairs_timer -= 6; last_advisor_action = 1
+on-arrival: advisor_action_timer = 1; prussian_affairs_timer -= 6; last_advisor_action = 1
 go-to: prussian_affairs_left
 
 @against_toleration
@@ -48,7 +48,7 @@ view-if: not constructive_vonc
 subtitle: Break our current toleration arrangement, and bring down the government via a no-confidence vote.
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_toleration == 0 : The <span style="color: #c00000;">SPD</span> is not currently in toleration. ?]
 choose-if: advisor_action_timer == 0 and spd_toleration
-on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time + 3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_toleration = 0; spd_toleration_right = 0; left_strength += 8; pro_republic -= 4; new_middle_spd -= 3; rural_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3; reformist_dissent += 8; left_dissent -= 5; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 2; spd_break_toleration += 1
+on-arrival: advisor_action_timer = 1; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time + 3; next_election_year = year if next_election_time >= time + 3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; spd_toleration = 0; spd_toleration_right = 0; left_strength += 8; pro_republic -= 4; new_middle_spd -= 3; rural_spd -= 3; old_middle_spd -= 3; catholics_spd -= 3; reformist_dissent += 8; left_dissent -= 5; dvp_relation -= 4; z_relation -= 4; ddp_relation -= 4; lvp_relation -= 4; ddp_right += 1; dvp_right += 2; spd_break_toleration += 1
 go-to: new_prussia_election if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and ((center_right_coalition_prussia < 50 and dnvp_ideology == "Moderate") or dnvp_ideology == "Radical"); center_right_coalition_prussia if in_social_catholic_coalition_prussia or in_weimar_coalition_prussia or in_grand_coalition_prussia or in_popular_front_prussia and center_right_coalition_prussia >= 50 and dnvp_ideology == "Moderate"
 
 We have grown tired of the burdens of toleration, and have called a vote of no confidence in the current minority government.
@@ -77,6 +77,6 @@ title: Snap Election
 subtitle: Call a snap election.
 unavailable-subtitle: [? if chancellor != "Rosenfeld" and president != "Rosenfeld" : Rosenfeld must be Chancellor or President. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if president = "Rosenfeld" and presidential_powers : We have removed this power from the president with a constitutional reform. ?]
 choose-if: advisor_action_timer == 0 and (chancellor == "Rosenfeld" or (president == "Rosenfeld" and not presidential_powers))
-on-arrival: advisor_action_timer = 6; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; 
+on-arrival: advisor_action_timer = 1; next_election_time = time + 3 if next_election_time > time+3; next_election_month = month + 3 if next_election_time >= time+3; next_election_year = year if next_election_time >= time+3; next_election_year += 1 if next_election_month > 12; next_election_month -= 12 if next_election_month > 12; 
 
 We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
