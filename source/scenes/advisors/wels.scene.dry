@@ -23,7 +23,7 @@ subtitle: Removes all cards from the hand.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 on-arrival: {!
-Q.advisor_action_timer = 6;
+Q.advisor_action_timer = 1;
 if (Q.difficulty >= 0) {
     window.dendryUI.dendryEngine.state.currentHands['main'] = [];
 } else {
@@ -38,7 +38,7 @@ title: Party Discipline
 subtitle: Reduce dissent across the party.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; left_dissent -= 5; labor_dissent -= 10; center_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 5
+on-arrival: advisor_action_timer = 1; left_dissent -= 5; labor_dissent -= 10; center_dissent -= 10; reformist_dissent -= 10; neorevisionist_dissent -= 5
 
 We have enforced party discipline to reduce dissent across all factions.
 
@@ -48,7 +48,7 @@ view-if: difficulty < 1
 subtitle: An emergency infusion of resources.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 6; emergency_used += 1; resources += 2; workers_spd -= 2 if emergency_used > 1; labor_dissent += 5 if emergency_used > 1; unemployed_spd -= 2 if emergency_used > 1; workers_spd -= 2 if emergency_used > 2; unemployed_spd -= 2 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2
+on-arrival: advisor_action_timer = 1; emergency_used += 1; resources += 2; workers_spd -= 2 if emergency_used > 1; labor_dissent += 5 if emergency_used > 1; unemployed_spd -= 2 if emergency_used > 1; workers_spd -= 2 if emergency_used > 2; unemployed_spd -= 2 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2; labor_dissent += 5 if emergency_used > 2
 
 [? if emergency_used <= 1: Wels has leveraged his position as party chairman to pull in donations and arrange quick loans. ?][? if emergency_used > 1 and emergency_used < 3: Discontent is brewing among the <span style="color: #c00000;">**SPD**</span>'s rank and file due to our persistent attempts at begging for money. ?][? if emergency_used > 2: We’re really scraping the barrel now—committed members are pressured into selling their valuables, while many others leave in frustration. ?]
 
@@ -60,7 +60,7 @@ view-if: achievement_moly and ((difficulty == -1 and not dynamic_mode) or diffic
 subtitle: This may have inflationary effects.
 choose-if: advisor_action_timer = 0
 unavailable-subtitle: [? if advisor_action_timer > 0 and not rubicon : [+ advisor_action_timer +] months before next advisor action. ?][? if advisor_action_timer > 0 and rubicon : [+ advisor_action_timer +] weeks before next emergency fundraising. ?]
-on-arrival: advisor_action_timer = 6; resources += 10; inflation += 1; data_miner_detected = 1; ip_grabber = 1
+on-arrival: advisor_action_timer = 1; resources += 10; inflation += 1; data_miner_detected = 1; ip_grabber = 1
 
 We have gained +10 resources.
 
@@ -82,7 +82,7 @@ title: Snap Election
 subtitle: Call a snap election.
 unavailable-subtitle: [? if chancellor != "Wels" and president != "Wels" : Wels must be Chancellor or President. ?][? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
 choose-if: advisor_action_timer == 0 and (chancellor == "Wels" or president == "Wels")
-on-arrival: advisor_action_timer = 6; time_to_election = 3
+on-arrival: advisor_action_timer = 1; time_to_election = 3
 call: set_next_election_time
 
 We have called for new elections, set for [+ next_election_month : month +] [+ next_election_year +].
