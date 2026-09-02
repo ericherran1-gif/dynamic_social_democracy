@@ -1,0 +1,59 @@
+title: Beary
+is-pinned-card: true
+tags: advisor, reformist
+card-image: img/portraits/Beary.jpg
+view-if: beary_advisor = 1
+new-page: true 
+
+= Beary
+
+Beary is a strange anthropormophic bear who claims he is a <span style="color: #c00000;">socialist</span> from the distant future. The party is very confused about this development but we cannot deny Beary can do a lot for us.
+
+- @modern_propaganda
+- @hindsight
+- @crisis
+- @money
+- @radicalize_new_middle
+- @root: Return to main
+
+@modern_propaganda
+title: Phonk edits and Furry art
+subtitle: Increase the popularity of <span style="color: #c00000;">socialism</span> through...modern...methods
+choose-if: advisor_action_timer <= 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] 
+on-arrival: advisor_action_timer = 1; new_middle_spd += 8*(1-dissent); worker_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent);
+
+Through somewhat unconventional methods we have spread futuristic propaganda among the masses. We may not fully understand it but we cannot deny it's effectiveness.
+
+@hindsight
+title: Speak of the Future
+subtitle: Warn the party of the upcoming crisis
+choose-if: advisor_action_timer <= 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
+on-arrival: advisor_action_timer = 1; labor_dissent -= 10; centrist_dissent -= 10; reformist_dissent -= 10; left_dissent -= 10;
+
+Beary has told us of the upcoming depression and the Nazi menace, the party must stand united and prepare.
+
+@crisis
+title: Addressing the economic crisis
+subtitle: Aufhäuser can help support a left-wing economic program.
+choose-if: advisor_action_timer <= 0 and nationalization_adopted == 0 and black_thursday_seen == 1 and nationalization_support <= 5
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if nationalization_adopted > 0 : We have already adopted the Left plan. ?]
+on-arrival: advisor_action_timer = 1; 
+go-to: crisis_program.support_left 
+
+@money
+title: Print Money
+subtitle: Provide disscretionary funds for the government budget
+choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and black_thursday_seen = 1
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] 
+on-arrival: advisor_action_timer = 1; budget += 2;
+
+@radicalize_new_middle
+title: Awaken the class consciousness of the New Middle Class
+subtitle: As the Chairman of the AfA-bund, Aufhäuser can help us to awaken the class consciousness of the new middle class.
+choose-if: socialism >= 51 and new_middle_spd_normalized >= 15 and new_middle_conscious == 0
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if socialism < 51: We must seek to make socialism more popular. ?][? if new_middle_spd_normalized < 15: We sadly do not have enough support amongst the new middle class. ?][? if new_middle_conscious == 1: We have already awoken the class consciousness of the new middle class. ?]
+max-visits: 1
+on-arrival: advisor_action_timer = 1; last_advisor_action = 1
+go-to: new_middle_consciousness
