@@ -40,20 +40,11 @@ subtitle: Hindsight is 20/20
 choose-if: advisor_action_timer <= 0 and nationalization_adopted == 0 and black_thursday_seen == 1
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if nationalization_adopted > 0 : We have already adopted the Left plan. ?]
 on-arrival: advisor_action_timer = 1; 
-go-to: crisis_program.support_left 
 
 @money
 title: Print Money
 subtitle: Provide disscretionary funds for the government budget
 choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and black_thursday_seen = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_toleration == 0 : The <span style="color: #c00000;">SPD</span> is not currently in government. ?] 
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_in_government == 0 : The <span style="color: #c00000;">SPD</span> is not currently in government. ?] 
 on-arrival: advisor_action_timer = 1; budget += 2;
 
-@radicalize_new_middle
-title: Awaken the class consciousness of the New Middle Class
-subtitle: As the Chairman of the AfA-bund, Aufhäuser can help us to awaken the class consciousness of the new middle class.
-choose-if: socialism >= 51 and new_middle_spd_normalized >= 15 and new_middle_conscious == 0
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if socialism < 51: We must seek to make socialism more popular. ?][? if new_middle_spd_normalized < 15: We sadly do not have enough support amongst the new middle class. ?][? if new_middle_conscious == 1: We have already awoken the class consciousness of the new middle class. ?]
-max-visits: 1
-on-arrival: advisor_action_timer = 1; last_advisor_action = 1
-go-to: new_middle_consciousness
