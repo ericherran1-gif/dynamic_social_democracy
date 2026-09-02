@@ -13,7 +13,6 @@ Beary is a strange anthropormophic bear who claims he is a <span style="color: #
 - @hindsight
 - @crisis
 - @money
-- @radicalize_new_middle
 - @root: Return to main
 
 @modern_propaganda
@@ -21,7 +20,7 @@ title: Phonk edits and Furry art
 subtitle: Increase the popularity of <span style="color: #c00000;">socialism</span> through...modern...methods
 choose-if: advisor_action_timer <= 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] 
-on-arrival: advisor_action_timer = 1; new_middle_spd += 8*(1-dissent); worker_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent); old_middle_spd += 6*(1-dissent); socialism += 6;
+on-arrival: advisor_action_timer = 1; new_middle_spd += 8*(1-dissent); workers_spd += 8*(1-dissent); unemployed_spd += 8*(1-dissent); old_middle_spd += 6*(1-dissent); socialism += 6;
 
 Through somewhat unconventional methods we have spread futuristic propaganda among the masses. We may not fully understand it but we cannot deny it's effectiveness.
 
@@ -34,17 +33,12 @@ on-arrival: advisor_action_timer = 1; labor_dissent -= 10; centrist_dissent -= 1
 
 Beary has told us of the upcoming depression and the <span style="color: #7A3C00;">Nazi</span> menace, the party must stand united and prepare.
 
-@crisis
-title: Addressing the economic crisis!
-subtitle: Hindsight is 20/20
-choose-if: advisor_action_timer <= 0 and nationalization_adopted == 0 and black_thursday_seen == 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?][? if black_thursday_seen == 0 : We are not currently in an economic crisis. ?][? if nationalization_adopted > 0 : We have already adopted the Left plan. ?]
-on-arrival: advisor_action_timer = 1; 
-
 @money
 title: Print Money
 subtitle: Provide disscretionary funds for the government budget
-choose-if: advisor_action_timer = 0 and moderate_plan_adopted = 0 and black_thursday_seen = 1
-unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_in_government == 0 : The <span style="color: #c00000;">SPD</span> is not currently in government. ?] 
+choose-if: advisor_action_timer = 0 and spd_in_government = 1
+unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?] [? if spd_in_government = 0 : The <span style="color: #c00000;">SPD</span> is not currently in government. ?] 
 on-arrival: advisor_action_timer = 1; budget += 2;
+
+Through a mysterious source we have gained more money to spend in government, while the bourgeois parties and even some of our own party members are wary of the sudden influx of funds we can't deny this will be very helpful for us.
 
