@@ -717,7 +717,7 @@ Friedrich Stampfer is now an advisor.
 
 @add_beary
 title: Beary
-subtitle: a <span style="color: #c00000;">socialist</span> bear? From the <span style="color: #0fc5ff;">*future!?*</span>
+subtitle: A <span style="color: #c00000;">socialist</span> bear? From the <span style="color: #0fc5ff;">*future!?*</span>
 is-card: true
 card-image: img/portraits/Beary.jpg
 view-if: beary_advisor = 0 and n_advisors < 3
