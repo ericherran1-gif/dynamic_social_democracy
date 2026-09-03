@@ -29,7 +29,7 @@ title: Warn these people!
 subtitle: Warn the party of the upcoming crisis!
 choose-if: advisor_action_timer <= 0
 unavailable-subtitle: [? if advisor_action_timer > 0 : [+ advisor_action_timer +] months before next advisor action. ?]
-on-arrival: advisor_action_timer = 1; labor_dissent -= 15; centrist_dissent -= 15; reformist_dissent -= 15; left_dissent -= 15; nazi_urgency += 5;
+on-arrival: advisor_action_timer = 1; left_dissent -= 15; labor_dissent -= 15; center_dissent -= 15; reformist_dissent -= 15; neorevisionist_dissent -= 15; nazi_urgency += 5;
 
 Beary has told us about the upcoming economic crash and how the <span style="color: #7A3C00;">Nazis</span> overun <span style="color: #001489;">Europe.</span>. Inter-Party tension cools as we're reminded of the grim future. [? if black_thursday_seen = 1: The crisis happened just as Beary predicted! Many in the party are shocked by this but we have far more pressing issues to worry about... ?]
 
